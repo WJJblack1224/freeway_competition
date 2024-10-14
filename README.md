@@ -55,9 +55,7 @@ feature_columns = ['年','月','日','時','分','國道名稱','方向','里程
           '施工事故註記','危險物品車輛註記','車輛起火註記','冒煙車事故註記','主線中斷註記','肇事車輛']
 df.columns = feature_columns
 ```
-**One-Hot Encoding**
-
-**Label-Encoding**
+**One-Hot Encoding**  &   **Label-Encoding**
 ```python
 #進行編碼
 from sklearn.preprocessing import LabelEncoder
@@ -139,6 +137,13 @@ stacking_regressor.fit(X_train, y_train)
 ```
 # 訓練結果比對
 回歸模型用於預測連續數值，常見的評估指標之一是均方誤差 (Mean Squared Error, MSE)，MSE 能夠衡量模型預測結果的好壞。我計算了隨機森林、投票法與堆疊法三個模型的 MSE，並進行了結果比對。最終發現，投票法 (Voting) 的過擬合現象最為輕微，顯示其在此專案中的表現較為穩定，基於其優異的穩定性與較低的過擬合風險，最終決定將投票法作為後續應用的模型。
+
+
+| 模型          | 原資料集 MSE | 測試集 MSE  |
+| ------------- | ------------ | ----------- |
+| 隨機森林回歸  | 184.19       | 428.60      |
+| 投票回歸      | 216.83       | 343.54      |
+| 堆疊回歸      | 189.40       | 408.62      |
 
 
 
